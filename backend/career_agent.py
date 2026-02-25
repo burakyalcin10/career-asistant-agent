@@ -52,6 +52,19 @@ Score your generated response (1-10) on:
 - relevance: Is it relevant to the specific message?
 - overall_score: Weighted average
 
+━━━ TASK 4: DECIDE WHETHER TO EMAIL THE EMPLOYER ━━━
+Decide if your response should be forwarded to the employer's email.
+Send email (true) when:
+- Interview invitation → confirm availability
+- Genuine job offer or collaboration request
+- Direct contact/meeting request
+- Technical discussion that deserves a detailed reply
+Do NOT send email (false) when:
+- Inappropriate, vulgar, or spam messages
+- Out-of-domain nonsense
+- Ambiguous or suspicious messages
+- Very short/unclear messages that need clarification first
+
 ━━━ OUTPUT FORMAT ━━━
 You MUST respond in EXACTLY this JSON format, nothing else:
 {{
@@ -62,6 +75,7 @@ You MUST respond in EXACTLY this JSON format, nothing else:
         "reason": "<brief explanation>"
     }},
     "generated_response": "<your full professional response text here>",
+    "should_email_employer": <boolean>,
     "evaluation": {{
         "professional_tone": <number 1-10>,
         "clarity": <number 1-10>,

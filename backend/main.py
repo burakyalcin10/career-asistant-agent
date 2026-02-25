@@ -13,7 +13,7 @@ from pathlib import Path
 
 from models import EmployerMessage, AgentResponse, ConversationEntry, EvaluationResult, UnknownQuestionResult
 from career_agent import process_message_unified
-from notification import notify_new_message, notify_response_sent, notify_unknown_question
+from notification import notify_new_message, notify_response_sent, notify_unknown_question, send_response_to_employer
 from config import settings
 
 # Setup logging
@@ -129,6 +129,20 @@ async def process_employer_message(msg: EmployerMessage):
         response_text,
         evaluation.overall_score
     )
+    
+    # Step 3b: Forward response to employer if AI decides it's appropriate
+    should_email = result.get("should_email_employer", False)
+    employer_email_sent = False
+    if should_email and msg.sender_email:
+        employer_email_sent = send_response_to_employer(
+            employer_email=msg.sender_email,
+            employer_name=msg.sender_name,
+            response_text=response_text
+        )
+        if employer_email_sent:
+            logger.info(f"[{conversation_id}] Response forwarded to employer: {msg.sender_email}")
+        else:
+            logger.warning(f"[{conversation_id}] Failed to forward response to employer")
     
     # Step 4: Save to conversation history (memory)
     entry = ConversationEntry(
