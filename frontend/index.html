@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Career Assistant AI Agent - Professional communication with employers on behalf of Burak Yalçın">
+    <title>Career Assistant AI Agent - Burak Yalçın</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon"><img src="/static/BY.svg" alt="Logo" class="logo-img"></div>
+                <div class="logo-text">
+                    <h1>Career Assistant AI Agent</h1>
+                    <p>Professional communication on behalf of <strong>Burak Yalçın</strong></p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="status-badge online">
+                    <span class="status-dot"></span>
+                    Agent Active
+                </div>
+                <button class="btn-history" onclick="toggleHistory()" title="Conversation History">
+                    📋 History
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Chat Area -->
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <!-- Welcome message -->
+                <div class="message agent-message welcome">
+                    <div class="message-avatar"><img src="/static/avatar.jpg" alt="Burak" class="avatar-img"></div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            <p>👋 Welcome! I'm Burak Yalçın's Career Assistant AI Agent.</p>
+                            <p>I can help you communicate with potential employers professionally. Send an employer's
+                                message and I'll generate a response, evaluate it, and notify you of the results.</p>
+                            <div class="features-grid">
+                                <div class="feature-card">
+                                    <span class="feature-icon">📧</span>
+                                    <span>Interview Invitations</span>
+                                </div>
+                                <div class="feature-card">
+                                    <span class="feature-icon">💻</span>
+                                    <span>Technical Questions</span>
+                                </div>
+                                <div class="feature-card">
+                                    <span class="feature-icon">🤝</span>
+                                    <span>Job Offers</span>
+                                </div>
+                                <div class="feature-card">
+                                    <span class="feature-icon">⚠️</span>
+                                    <span>Unknown Detection</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-container">
+                <div class="input-fields">
+                    <div class="input-row">
+                        <input type="text" id="senderName" placeholder="Employer Name" value="HR Manager"
+                            class="input-small">
+                        <input type="email" id="senderEmail" placeholder="Employer Email" value="hr@company.com"
+                            class="input-small">
+                        <input type="text" id="subject" placeholder="Subject" value="General Inquiry"
+                            class="input-small">
+                    </div>
+                    <div class="input-main-row">
+                        <textarea id="messageInput" placeholder="Type the employer's message here..."
+                            rows="3"></textarea>
+                        <button id="sendBtn" onclick="sendMessage()" class="btn-send" title="Send Message">
+                            <span class="send-icon">➤</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Quick Test Cases -->
+                <div class="test-cases">
+                    <span class="test-label">Quick Tests:</span>
+                    <button class="test-btn" onclick="loadTestCase(1)">📅 Interview Invitation</button>
+                    <button class="test-btn" onclick="loadTestCase(2)">💻 Technical Question</button>
+                    <button class="test-btn" onclick="loadTestCase(3)">⚠️ Salary Negotiation</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Side Panel - History -->
+        <div class="history-panel" id="historyPanel">
+            <div class="panel-header">
+                <h3>📋 Conversation History</h3>
+                <button class="btn-close" onclick="toggleHistory()">✕</button>
+            </div>
+            <div class="history-list" id="historyList">
+                <div class="empty-history">
+                    <p>No conversations yet.</p>
+                    <p class="hint">Send a message to get started!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
