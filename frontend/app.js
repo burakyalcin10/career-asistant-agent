@@ -69,6 +69,19 @@ function loadTestCase(num) {
     document.getElementById('messageInput').focus();
 }
 
+// ===== Enter to Send, Shift+Enter for New Line =====
+document.addEventListener('DOMContentLoaded', function () {
+    const input = document.getElementById('messageInput');
+    if (input) {
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    }
+});
+
 // ===== Send Message =====
 async function sendMessage() {
     const messageInput = document.getElementById('messageInput');

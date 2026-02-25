@@ -6,8 +6,8 @@ This report documents the design, implementation, and evaluation of a Career Ass
 
 ## 2. Design Decisions
 
-### 2.1 LLM Selection: Google Gemini 2.0 Flash
-We chose Google Gemini 2.0 Flash for its balance of quality and speed. The flash model provides fast inference times suitable for real-time interactions while maintaining high-quality text generation. Using a single LLM provider simplifies API key management and reduces costs.
+### 2.1 LLM Selection: Google Gemini 2.5 Flash
+We chose Google Gemini 2.5 Flash for its balance of quality and speed. The flash model provides fast inference times suitable for real-time interactions while maintaining high-quality text generation. Using a single LLM provider simplifies API key management and reduces costs.
 
 ### 2.2 Agent Architecture: Sequential Pipeline with Feedback Loop
 The agent follows a sequential pipeline: Unknown Detection → Response Generation → Evaluation → (optional Revision loop). This design ensures:
